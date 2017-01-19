@@ -17,6 +17,7 @@ log = hookenv.log
 def install():
     fetch.apt_install(['python3-flask'])
 
+@hooks.hook('upgrade-charm')
 @hooks.hook('config-changed')
 def config_changed():
     utils.setup_flask()
@@ -32,6 +33,12 @@ def start():
 @hooks.hook('stop')
 def stop():
     host.service_stop(utils.FLASK_SERVICE)
+
+@hooks.hook('flask-slave-relation-broken')
+@hooks.hook('flask-slave-relation-departed')
+@hooks.hook('flask-slave-relation-joined')
+def noop():
+    pass
 
 if __name__ == "__main__":
     # execute a hook based on the name the program is called by

@@ -21,6 +21,10 @@ def install():
 def config_changed():
     utils.setup_flask()
 
+@hooks.hook('flask-slave-relation-changed')
+def flask_slave_relation_changed():
+    utils.setup_flask()
+
 @hooks.hook('start')
 def start():
     host.service_start(utils.FLASK_SERVICE)

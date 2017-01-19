@@ -31,8 +31,14 @@ def copy_static_files():
 
 def charm_context():
     there_must_be_a_more_idiomatic_way = {}
+    rdata = {}
     for key, value in hookenv.config().items():
         there_must_be_a_more_idiomatic_way[key.replace('-', '_')] = value
+    for rid in hookenv.relation_ids('flask-slave'):
+        for unit in hookenv.related_units(rid):
+            rdata = hookenv.relation_get(rid=rid, unit=unit)
+    there_must_be_a_more_idiomatic_way['motd'] = rdata.get('motd', 'No message')
+    print(there_must_be_a_more_idiomatic_way)
     return there_must_be_a_more_idiomatic_way
 
 def render_files():

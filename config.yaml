@@ -1,0 +1,5 @@
+options:
+  debug:
+    type: boolean
+    default: False
+    description: "Enable Flask debug mode"

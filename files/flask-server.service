@@ -1,0 +1,12 @@
+[Unit]
+Description=Flask Server
+After=network.target
+
+[Service]
+Type=simple
+User=root
+Group=root
+ExecStart=/opt/flask_slave/flask_server.py
+
+[Install]
+WantedBy=multi-user.target

@@ -8,6 +8,6 @@ tags:
   # https://jujucharms.com/docs/stable/authors-charm-metadata
   - misc
 subordinate: false
-provides:
-  flask-slave:
-    interface: slave
+requires:
+  flask-master:
+    interface: flask-master

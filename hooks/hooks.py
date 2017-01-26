@@ -22,7 +22,7 @@ def install():
 def config_changed():
     utils.setup_flask()
 
-@hooks.hook('flask-slave-relation-changed')
+@hooks.hook('flask-master-relation-changed')
 def flask_slave_relation_changed():
     utils.setup_flask()
 
@@ -34,9 +34,9 @@ def start():
 def stop():
     host.service_stop(utils.FLASK_SERVICE)
 
-@hooks.hook('flask-slave-relation-broken')
-@hooks.hook('flask-slave-relation-departed')
-@hooks.hook('flask-slave-relation-joined')
+@hooks.hook('flask-master-relation-broken')
+@hooks.hook('flask-master-relation-departed')
+@hooks.hook('flask-master-relation-joined')
 def noop():
     pass
 

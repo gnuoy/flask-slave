@@ -34,7 +34,7 @@ def charm_context():
     rdata = {}
     for key, value in hookenv.config().items():
         there_must_be_a_more_idiomatic_way[key.replace('-', '_')] = value
-    for rid in hookenv.relation_ids('flask-slave'):
+    for rid in hookenv.relation_ids('flask-master'):
         for unit in hookenv.related_units(rid):
             rdata = hookenv.relation_get(rid=rid, unit=unit)
     there_must_be_a_more_idiomatic_way['motd'] = rdata.get('motd', 'No message')

@@ -7,10 +7,15 @@ import charmhelpers.core.templating as ch_templating
 import shutil
 import subprocess
 
+FLASK_SYSTEMD_FILE='/etc/systemd/system/flask-server.service'
+FLASK_SERVER='/opt/flask_slave/flask_server.py'
+FLASK_SERVER_CONFIG='/opt/flask_slave/conf/flask_config.cfg'
+FLASK_STATIC_CONTENT='/opt/flask_slave/static/index.html'
+
 FLASK_SERVICE="flask-server"
 FLASK_ASSETS = {
-     'STATIC_FILES': ['/etc/systemd/system/flask-server.service', '/opt/flask_slave/flask_server.py'],
-     'TEMPLATES': ['/opt/flask_slave/conf/flask_config.cfg', '/opt/flask_slave/static/index.html']}
+     'STATIC_FILES': [FLASK_SYSTEMD_FILE, FLASK_SERVER],
+     'TEMPLATES': [FLASK_SERVER_CONFIG, FLASK_STATIC_CONTENT]}
 
 def log(msg):
     print(msg)
